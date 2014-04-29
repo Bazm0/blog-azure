@@ -1,5 +1,3 @@
-require "bundler/capistrano"
-
 set :application, "blog_app"
 set :user, "azureuser"
 
@@ -8,7 +6,7 @@ set :repository, "git@github.com:bazm0/blog_app.git"
 set :branch, "master"
 set :use_sudo, true
 
-server "fragdtest.cloudapp.net", :web, :app, :db, primary: true
+server "fragdtest.cloudapp.net", roles: %w{web app db}, primary: true
 
 set :deploy_to, "/home/#{user}/apps/#{application}"
 default_run_options[:pty] = true
